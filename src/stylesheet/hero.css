@@ -1,0 +1,25 @@
+.hero {
+  position: relative;
+  height: 480px;
+  background: var(--primary-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: center center url(https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80) ;
+}
+
+.hero-cta {
+  position: relative;
+  top: 60%;
+  text-align: center;
+}
+
+.hero-cta__action {
+  padding: 10px;
+}
+
+.hero h2 {
+  top: 60%;
+  position: relative;
+  text-align: center;
+  color: var(--dev-white);
+}

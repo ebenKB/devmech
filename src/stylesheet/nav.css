@@ -1,0 +1,23 @@
+/* Style the navigation links */
+.nav {
+  position: fixed;
+  width: calc(100% - 40px);
+  text-align: right;
+  padding: 20px;
+  background:var(--dev-black);
+  color: var(--dev-white);
+  z-index: 10;
+}
+
+.nav .nav-links li {
+  list-style: none;
+  display: inline;
+  padding: 0 10px;
+}
+
+.nav-offest {
+  height: 70px;
+  /* background: red; */
+  position: relative;
+  z-index: 9;
+}
