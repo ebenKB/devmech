@@ -1,7 +1,8 @@
 /* Style the navigation links */
 .nav {
   position: fixed;
-  width: calc(100% - 40px);
+  display: flex;
+  width: 100%;
   text-align: right;
   padding: 20px;
   background:var(--dev-black);

@@ -1,0 +1,20 @@
+.cart-holder {
+  position: relative;
+}
+.cart-holder img {
+  width: 30px;
+}
+
+.cart-holder .cart-title {
+  color: red;
+  position: absolute;
+  background: var(--dev-white);
+  border-radius: 100%;
+  padding: 5px;
+  min-width: 20px;
+  min-height: 20px;
+  text-align: center;
+  left: 17px;
+  top: -10px;
+
+}

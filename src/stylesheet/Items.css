@@ -1,0 +1,23 @@
+.item {
+  width: 200px;
+  border-radius: 5px;
+  padding: 5px;
+  background: var(--dev-white);
+  margin: 8px;
+}
+
+.item img {
+  width: 100%;
+}
+
+.item .item-details .item-divider {
+  display: block;
+  height: 2px;
+  width: 0;
+  background: var(--primary-color);
+}
+
+.item:hover .item-details .item-divider {
+  width: 100%;
+  transition:  all 0.5s ease-in-out;
+}

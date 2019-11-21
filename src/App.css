@@ -2,7 +2,13 @@
 @import './stylesheet/nav.css';
 @import './stylesheet/hero.css';
 @import './stylesheet//main-content.css';
+@import './stylesheet/Items.css';
+@import './stylesheet/footer.css';
+@import './stylesheet/cart.css';
 
+body {
+  background: var(--main-bg);
+}
 /* style the main app  */
 .App.light {
   position: relative;
@@ -11,4 +17,10 @@
 .dev-container {
   width: 70%;
   margin: auto;
+}
+
+/* Grid layout  */
+.grid {
+  display: flex;
+  flex-flow: wrap;
 }
