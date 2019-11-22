@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import CartContext from '../../../../Cart/cartContext';
+import CartContext from '../../../Cart/cartContext';
 
 const Show = () => {
   const [items, setItems] = useContext(CartContext);
@@ -14,12 +14,39 @@ const Show = () => {
   };
 
   return (
-    <div>
-      Show the product details here... {items.length}
-      <button 
-        className="ui primary buttton"
-        onClick={ handleClick }
-      >Add to cart</button>
+    <div className="md-container">
+      <div className="left">one</div>
+      <div className="main">
+        <img src="https://images.asos-media.com/products/esprit-organic-turtle-neck-jumper-in-black/14150142-1-black?$n_640w$&wid=634&fit=constrain" alt=""/>
+      </div>
+      <div className="right">
+        <p>
+          Hollister teddy borg lined hooded puffer in black
+        </p>
+        <p>This product ships to your location</p>
+        <h3>$ 54.9</h3>
+        <div>
+          Size: 
+          <select name="" id="">
+            <option value="">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+          </select>
+        </div>
+        <div>
+          <button 
+            className="ui green large button"
+            onClick={ handleClick }
+          >
+            Add to cart
+          </button>
+          {items.map(item => {
+            return(
+              <div>{item.price}</div>
+            )
+          })}
+        </div>
+      </div>
     </div>
   );
 }

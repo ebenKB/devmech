@@ -1,5 +1,6 @@
-Footer {
+.footer {
   padding: 20px;
-  background: red;
-  height: 40px;
+  height: 100px;
+  background: var(--dev-black);
+  color: var(--dev-white);
 }

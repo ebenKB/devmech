@@ -16,5 +16,36 @@
   text-align: center;
   left: 17px;
   top: -10px;
-
 }
+
+.show-cart{
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cart-item,
+.cart-header {
+  background: var(--dev-white);
+}
+
+.cart-item {
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.cart-header {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.cart-order__summary {
+  position: fixed;
+  background: var(--dev-white);
+  min-height: 200px;
+  padding: 20px;
+}
+

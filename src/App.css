@@ -1,10 +1,13 @@
 @import './stylesheet/variables.css';
+@import './stylesheet/util.css';
 @import './stylesheet/nav.css';
 @import './stylesheet/hero.css';
 @import './stylesheet//main-content.css';
 @import './stylesheet/Items.css';
 @import './stylesheet/footer.css';
 @import './stylesheet/cart.css';
+@import './stylesheet/showProduct.css';
+@import './stylesheet/grid.css';
 
 body {
   background: var(--main-bg);
@@ -17,10 +20,32 @@ body {
 .dev-container {
   width: 70%;
   margin: auto;
+  min-height: calc(100vh - 140px);
 }
 
 /* Grid layout  */
 .grid {
   display: flex;
   flex-flow: wrap;
+}
+
+.strict.grid {
+  display: grid;
+}
+
+.img-caption img{
+  width: 100%;
+}
+
+.img-rounded{
+  border-radius: 5px;
+}
+
+.btn-sticky {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+.rounded {
+  border-radius: 5px;
 }
