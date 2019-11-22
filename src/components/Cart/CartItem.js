@@ -1,6 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import CartContext from '../Cart/cartContext';
 
-const CartItem = () => {
+const CartItem = ({item, index}) => {
+  const [items, setItems] =useContext(CartContext);
+
+  //  handle actions
+  const removeItem =() => {
+    setItems(items => []);
+  }
+
   return (
     <div className="cart-item strict grid columns-4__12 grid-gap__10">
       <div>
@@ -22,7 +30,10 @@ const CartItem = () => {
           Estimated Delivery Time:37-57 Days
           1
           </p>
-        <button className="ui default button btn-sticky">Remove from cart</button>
+        <button 
+          className="ui default button btn-sticky"
+          onClick={removeItem}
+        >Remove from cart</button>
       </div>
     </div>
   )

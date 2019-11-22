@@ -1,23 +1,26 @@
 import React, {useContext} from 'react'
 import CartContext from '../../Cart/cartContext';
 import CartItem from '../../Cart/CartItem';
+import OrderSummary from '../OrderSummary';
 
 const CartOrder = () => {
-  const [items, updateCart] = useContext(CartContext);
+  const [items] = useContext(CartContext);
   return (
     <div className="show-cart strict grid columns-12__4 grid-gap__30 m-t-50">
       <div>
         <div className="cart-header">
           <h1>Showing cart ({items.length})</h1>
         </div>
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {
+          items.map((item, index)=> {
+            return (
+              <CartItem item={item} index={index}/>
+            );
+          })
+        }
       </div>
       <div>
-        <div className="cart-order__summary rounded">
-          <h2>Order summary</h2>
-        </div>
+        <OrderSummary />
       </div>
     </div>
   )
