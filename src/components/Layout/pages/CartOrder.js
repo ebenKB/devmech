@@ -4,17 +4,17 @@ import CartItem from '../../Cart/CartItem';
 import OrderSummary from '../OrderSummary';
 
 const CartOrder = () => {
-  const [items] = useContext(CartContext);
+  const [cart] = useContext(CartContext);
   return (
     <div className="show-cart strict grid columns-12__4 grid-gap__30 m-t-50">
       <div>
         <div className="cart-header">
-          <h1>Showing cart ({items.length})</h1>
+          <h1>Showing cart ({cart.items.length})</h1>
         </div>
         {
-          items.map((item, index)=> {
+          cart.items.map((item, index)=> {
             return (
-              <CartItem item={item} index={index}/>
+              <CartItem item={item} index={index} key={item.id}/>
             );
           })
         }

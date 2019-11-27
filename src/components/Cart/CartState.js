@@ -2,17 +2,23 @@ import  React, {useState} from 'react';
 import CartContext from './cartContext';
 
 const CartState = (props) => {
-  const [items, setItems] = useState([
+  const [cart, setItems] = useState(
     {
-      name: 'Mens perform',
-      price: 4.00,
-      catetory: 'Cosmetics',
+      isOpen: false,
+      items: [
+        {
+          name: 'Mens perform',
+          price: 4.00,
+          catetory: 'Cosmetics',
+          id: '7787gghg656888uuu',
+        }
+      ]
     }
-  ]);
+  );
   // make the cart state available to the app
   return (
     <CartContext.Provider 
-      value={[items, setItems]}
+      value = {[cart, setItems]}
     >
       {props.children}
     </CartContext.Provider>

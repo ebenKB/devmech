@@ -2,15 +2,19 @@ import React, { useContext } from 'react';
 import CartContext from '../../../Cart/cartContext';
 
 const Show = () => {
-  const [items, setItems] = useContext(CartContext);
+  const [cart, setItems] = useContext(CartContext);
 
   const handleClick =() => {
     // append a new item to the cart
-    setItems(oldCart => [...oldCart, {
-      name: 'Cart item name',
-      price: 5.65,
-      category: 'Cat item category'
-    }])
+    setItems(oldCart => {
+      return {
+        items: [...oldCart.items, {
+          name: 'Cart item name',
+          price: 5.65,
+          category: 'Cat item category'
+        }]
+      }
+    })
   };
 
   return (
@@ -40,7 +44,7 @@ const Show = () => {
           >
             Add to cart
           </button>
-          {items.map(item => {
+          {cart.items.map(item => {
             return(
               <div>{item.price}</div>
             )

@@ -1,7 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link  } from 'react-router-dom';
+// import AuthContext from '../../Auth/authContext';
 
 const Item = () => {
+  // const authContext = useContext(AuthContext);
+  // const [state] = authContext;
+  // const {loading} = state;
+
   return (
     <Link to={'product/:id'}>
       <div className="item">

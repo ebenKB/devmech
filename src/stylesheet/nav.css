@@ -1,13 +1,28 @@
 /* Style the navigation links */
 .nav {
   position: fixed;
-  display: flex;
+  /* display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; */
+
   width: 100%;
-  text-align: right;
   padding: 20px;
   background:var(--dev-black);
   color: var(--dev-white);
   z-index: 10;
+}
+
+.nav .nav-wrapper {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  width: 70%;
+  margin: auto;
+}
+
+.nav .nav-wrapper .nav-right {
+  display: grid;
+  /* grid-template-columns: 60% 40%; */
+  grid-template-columns: max-content max-content;
 }
 
 .nav .nav-links li {
@@ -21,4 +36,8 @@
   /* background: red; */
   position: relative;
   z-index: 9;
+}
+
+.nav-img img{
+  width: 80px;
 }
