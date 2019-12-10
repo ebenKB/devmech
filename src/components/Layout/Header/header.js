@@ -1,6 +1,6 @@
 import React from 'react'
-import Nav from '../Navigation';
-import NavOffset from '../NavOffset';
+import Nav from '../navigation/Navigation';
+import NavOffset from '../navigation/NavOffset';
 
 const header = () => {
   return (

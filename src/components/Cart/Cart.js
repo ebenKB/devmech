@@ -3,6 +3,7 @@ import CartContext from './cartContext';
 import CartLogo from '../../assets/shopping-cart.svg';
 import { Label } from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
+import './cart.css';
 
 const Cart = () => {
   const [cart] = useContext(CartContext);

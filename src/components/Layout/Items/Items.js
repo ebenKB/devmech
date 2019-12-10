@@ -1,22 +1,23 @@
 import React, {Component} from 'react';
 import Item from './Item';
+import ProductItems from '../../../seed/products';
+
+import './items.css';
 
 class Items extends Component{
   constructor() {
     super();
       this.state = {
-        items: null,
+        items: ProductItems,
       }
   }
 
   componentDidMount() {
-    console.log("The component has mounted...")
-    if(this.state.items === null) {
-      console.log('the items is null');
-      this.setState({
-        items: ["one", "two"]
-      })
-    }
+    // if(this.state.items === null) {
+    //   this.setState({
+    //     items: []
+    //   })
+    // }
   }
 
   render() {
@@ -24,38 +25,11 @@ class Items extends Component{
       <div>
         <h1>Featured items</h1>
         <div className="grid">
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {
+            ProductItems.map((item) => {
+              return <Item item={item} key={item.id}/>
+            })
+          }
         </div>
       </div>
     )

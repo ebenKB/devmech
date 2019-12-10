@@ -2,13 +2,13 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Layout/Header/header';
-import Home from './components/Layout/pages/app/Home';
-import About from './components/Layout/pages/app/About';
-import CartOrders from './components/Layout/pages/CartOrder';
-import Footer from './components/Layout/Footer';
+import Home from './pages/app/Home';
+import About from './pages/app/About';
+import CartOrders from './pages/CartOrder';
+import Footer from './components/Layout/footer/Footer';
 import CartState from './components/Cart/CartState';
 import AuthSate from './components/Auth/AuthState';
-import ShowProduct from './components/Layout/pages/products/show'
+import ShowProduct from './pages/products/show';
 import ProtectedRoute from './routing/protected';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';

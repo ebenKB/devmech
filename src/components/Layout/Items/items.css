@@ -1,20 +1,29 @@
 .item {
-  width: 200px;
+  width: 22.4%;
   border-radius: 5px;
   padding: 5px;
   background: var(--dev-white);
+  color: var(--dev-black);
   margin: 8px;
+}
+
+.item:hover{
+  color: var(--dev-black);
 }
 
 .item img {
   width: 100%;
+  height: 85%;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 5px;
 }
 
 .item .item-details .item-divider {
   display: block;
-  height: 2px;
+  height: 8px;
   width: 0;
-  background: var(--primary-color);
+  background:#b4b9b6;
 }
 
 .item:hover .item-details .item-divider {

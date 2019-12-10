@@ -1,8 +1,9 @@
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
-import Cart from '../Cart/Cart';
-import Logo from '../../assets/eco.png';
-import AuthContext from '../Auth/authContext';
+import Cart from '../../Cart/Cart';
+import Logo from '../../../assets/eco.png';
+import AuthContext from '../../Auth/authContext';
+import './nav.css';
 
 const Navigation = () => {
   const authContext = useContext(AuthContext);

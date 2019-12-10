@@ -14,16 +14,20 @@ const Login = (props) => {
 
   // Login user
   const login =() => {
-    authActions.Login(user);
-    setItems(oldState => {
-      return {
-        isOpen: true,
-        items: [...oldState.items],
-      }
-    });
-    // authActions.authenticateUser();
-    console.log('This is the props object', props);
-    props.history.goBack();
+
+    authActions.Login(user)
+      .then(() => {
+        setItems(oldState => {
+          return {
+            isOpen: true,
+            items: [...oldState.items],
+          }
+        });
+        props.history.goBack();
+      })
+      .catch(err => {
+
+      });
   }
 
   const handleChange = (e) => setUser({...user,  [e.target.name] : e.target.value });

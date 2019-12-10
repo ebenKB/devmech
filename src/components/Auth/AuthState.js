@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import AuthContext from './authContext';
 
@@ -20,6 +20,22 @@ const [state, setAuth] = useState({
   user: null,
 });
 
+useEffect(() => {
+  // check if there is a user in the backend
+  const item = JSON.parse(localStorage.getItem('devmech'));
+  // console.log('item', item.token);
+  if(item.token) {
+    setAuth(state => {
+      return {
+        ...state, 
+        isAuthenticated: true,
+      }
+    })
+  }
+  
+  // eslint-disable-next-line
+}, ['isAuthenticated']);
+
 // define actions for the auth state
 const authActions = {}
 
@@ -31,37 +47,51 @@ const authActions = {}
       // redirect to login
       props.histroy.push('/login')
     } else {
-      console.log('This is the status', res);
       this.setError('an error occurred...');
     }
   } catch(err) {
     console.log('AN ERROR OCCURRED WHILE TRYING TO REGISTER THE USER');
+    this.setError('an error occurred...');
   }
 };
 
 authActions.Login = async (user) => {
-  const res = await axios.post('/users/login', user);
-  const data = res.data.access_token;
-  const token = data[0];
-  const [id, name, email] = data[1];
-  const loggedInUser = {
-    name,
-    email,
-    id
-  };
-
-  localStorage.setItem('devmech-token', token);
-
-  // update the state
-  setAuth(state => {
-    return {
-      ...state,
-      user: loggedInUser,
-      token,
-      isAuthenticated: true,
-      loading: false,
+  return new Promise(async(resolve, reject) => {
+    try {
+      const res = await axios.post('/users/login', user);
+      const data = res.data.access_token;
+      if(data !== null) {
+        const token = data[0];
+        const [id, name, email] = data[1];
+        const loggedInUser = {
+          name,
+          email,
+          id
+        };
+      
+        localStorage.setItem('devmech', JSON.stringify({
+          authUser: loggedInUser,
+          token
+        }));
+    
+        // update the state
+        setAuth(state => {
+          return {
+            ...state,
+            user: loggedInUser,
+            token,
+            isAuthenticated: true,
+            loading: false,
+          }
+        });
+      }
+      resolve(true);
+    } catch(err) {
+      reject(err);
     }
-  });
+  })
+
+
 };
 
 authActions.Logout =() => {
