@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Layout/Header/header';
@@ -7,18 +7,21 @@ import About from './pages/app/About';
 import CartOrders from './pages/CartOrder';
 import Footer from './components/Layout/footer/Footer';
 import CartState from './components/Cart/CartState';
-import AuthSate from './components/Auth/AuthState';
 import ShowProduct from './pages/products/show';
 import ProtectedRoute from './routing/protected';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
+import ThemeState from './components/theme/themeState';
+import ThemeContext from './components/theme/themeContext';
 
 function App() {
+  // const [theme] = useContext(ThemeContext);
+
   return (
-    <AuthSate>
+    <ThemeState>
       <CartState>
         <Router>
-          <div className="App light">
+          <div className={`app light`}>
             <Header />
             <div className="dev-container">
               <Switch>
@@ -35,7 +38,7 @@ function App() {
           </div>
         </Router>
       </CartState>
-    </AuthSate>
+    </ThemeState>
   );
 }
 

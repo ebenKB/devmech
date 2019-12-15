@@ -1,14 +1,9 @@
 import React, {useContext} from 'react'
 import CartContext from '../Cart/cartContext';
+import { connect } from 'react-redux';
+import { removeItemFromCart } from '../../redux/cart/cart.actions'
 
-const CartItem = ({item, index}) => {
-  const [items, setItems] = useContext(CartContext);
-
-  //  handle actions
-  const removeItem =() => {
-    setItems(items => items.splice(index, 1));
-  }
-
+const CartItem = ({item, removeItemFromCart}) => {
   return (
     <div className="cart-item strict grid columns-4__12 grid-gap__10" >
       <div>
@@ -25,6 +20,7 @@ const CartItem = ({item, index}) => {
           Gray Pink 4pcs Girl Boy Kid Bed Cover Set Duvet Cover Adult Child Bed Sheets And Pillowcases Comforter Bedding Set 2TJ-61005
         </p>
         <p>
+          {item.cost}
           Shipping: US $9.8
           via China Post Registered Air Mail
           Estimated Delivery Time:37-57 Days
@@ -32,11 +28,15 @@ const CartItem = ({item, index}) => {
           </p>
         <button 
           className="ui default button btn-sticky"
-          onClick={removeItem}
+          onClick={removeItemFromCart}
         >Remove from cart</button>
       </div>
     </div>
   )
 }
 
-export default CartItem
+const mapDispatchToProps = (dispatch) => ({
+  removeItemFromCart : (item) => dispatch(removeItemFromCart(item))
+})
+
+export default connect(null, mapDispatchToProps)(CartItem)

@@ -1,15 +1,15 @@
-import React, {useContext} from 'react'
-import CartContext from '../../components/Cart/cartContext';
-
+import React from 'react'
+import { connect } from 'react-redux';
+import { addItemToCart } from '../../redux/cart/cart.actions';
 import './cartSummary.css'
 
-const CartSummary = () => {
-  const [cart, setItems] = useContext(CartContext);
-  
-  const handleClick = () => {
-    console.log('handling click event')
+const CartSummary = ({addItemToCart}) => {
+  const handleclick = () => {
+    addItemToCart({
+      id: 4,
+      name: 'shoes from canada',
+    });
   }
-
   return (
     <div>
       <p>
@@ -28,7 +28,7 @@ const CartSummary = () => {
       <div>
         <button 
           className="ui green large button"
-          onClick={ handleClick }
+          onClick={ handleclick }
         >
           Add to cart
         </button>
@@ -37,4 +37,8 @@ const CartSummary = () => {
   )
 }
 
-export default CartSummary
+const mapDispatchToProps = (dispatch) => ({
+  addItemToCart : (item) => dispatch(addItemToCart(item))
+});
+
+export default connect(null, mapDispatchToProps)(CartSummary)

@@ -1,70 +1,83 @@
-import React, {useState, useContext} from 'react'
-import LoginContext from './authContext';
-import CartContext from '../Cart/cartContext';
+import React, {useState } from 'react'
+import { connect } from 'react-redux';
+import { setCurrentUser } from '../../redux/user/user.actions';
+import  Axios  from 'axios';
+import LoginForm from '../Layout/forms/login/Login';
 
-const Login = (props) => {
+const axios = Axios.create({
+  baseURL: 'https://mech-api.herokuapp.com/api/v1',
+  headers: {'Content-Type': 'application/json'}
+});
+
+const Login = ({setCurrentUser, history}) => {
   // the user who will login
   const [user, setUser] = useState({
-    email: '',
-    password: '',
+    email : '',
+    password : '',
+    isLoading: false,
   });
-
-  const [state, setAuth, authActions] = useContext(LoginContext);
-  const [,setItems] = useContext(CartContext);
-
-  // Login user
-  const login =() => {
-
-    authActions.Login(user)
-      .then(() => {
-        setItems(oldState => {
-          return {
-            isOpen: true,
-            items: [...oldState.items],
-          }
-        });
-        props.history.goBack();
-      })
-      .catch(err => {
-
-      });
-  }
 
   const handleChange = (e) => setUser({...user,  [e.target.name] : e.target.value });
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setUser((oldState) => {
+      return{
+        ...oldState,
+        isLoading : true,
+      }
+    });
+
+    // check if the data is valid to submit
     if(password !== '' && email !== '') {
-      login();
-    } else {
-      authActions.setError('Email/password is blank');
+      try {
+        const res = await axios.post('/users/login', user);
+        const data = res.data.access_token;
+        
+        // get the details of the user from the response
+        const token = data[0];
+        const [id, name, email] = data[1];
+        const loggedInUser = { name, email, id };
+  
+        setUser((oldState) => {
+          return {
+            ...oldState,
+            isLoading: false,
+          }
+        });
+        setCurrentUser(loggedInUser);
+  
+        // save the details to local storage
+        localStorage.setItem('devmech', JSON.stringify({
+          authUser : loggedInUser,
+          token
+        }));
+        history.goBack();
+      } catch(err) {
+        setUser((oldState) => {
+          return {
+            ...oldState,
+            isLoading: false,
+          }
+        });
+      }
     }
   }
 
   const {email, password } = user;
   return (
-    <div className="form-container">
-      <h1>Login From Here</h1>
-      <h2>Token: {state.token}</h2>
-      {
-        state.error && 
-        <div className="ui red label m-t-20 m-b-20">{state.error}</div>
-      }
-      <form onSubmit={handleSubmit}>
-        <div className="form-group m-t-20">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" value={email} onChange={handleChange}/>
-        </div>
-        <div className="form-group m-t-20">
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" value={password} onChange={handleChange}/>
-        </div>
-        <div className="form-group m-t-20">
-          <input type="submit" value="Login" className="ui green button"/>
-        </div>
-      </form>
-    </div>
+    <LoginForm 
+      user={user}
+      email={email}
+      password={password}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
   )
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
