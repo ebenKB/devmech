@@ -1,18 +1,16 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import Cart from '../../Cart/Cart';
 import Logo from '../../../assets/eco.png';
-import AuthContext from '../../Auth/authContext';
+import { connect } from 'react-redux';
+import { revokeAuth } from '../../../redux/user/user.actions';
 import './nav.css';
 
-const Navigation = () => {
-  const authContext = useContext(AuthContext);
-  const [state,,authActions] = authContext;
-  const {isAuthenticated} = state;
-  console.log('Authetnicatated in nagiation: ', isAuthenticated);
-
+const Navigation = ({revokeAuth, isAuthenticated}) => {
+  // logout user
   const handleLogout = () => {
-    authActions.Logout();
+    revokeAuth();
+    localStorage.removeItem('devmech-token');
   }
   return (
     <div className="nav">
@@ -31,11 +29,15 @@ const Navigation = () => {
             }
             {
               !isAuthenticated && 
-              <li><Link to="/user/login">Login</Link></li>
+              <li>
+                <Link to="/user/login">Login</Link>
+              </li>
             }
             {
               !isAuthenticated && 
-              <li><Link to="/user/register">Register</Link></li>
+              <li>
+                <Link to="/user/register">Register</Link>
+              </li>
             }
           </ul>
           <Cart/>
@@ -45,4 +47,13 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+const mapDispatchToProps = (dispatch) => ({
+  revokeAuth : () => dispatch(revokeAuth())
+});
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.user.isAuthenticated,
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Navigation)

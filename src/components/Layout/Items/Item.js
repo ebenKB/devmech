@@ -11,7 +11,7 @@ const Item = ({item}) => {
   return (
     <Link
       to ={`product/${id}`}
-      className="item">
+      className="item card-panel hoverable">
       <img src={imageUrl} alt="avatart"/>
       <div className="item-details">
         <div className="item-divider m-b-5"></div>

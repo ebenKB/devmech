@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import AuthContext from './authContext';
 
+import { setCurrentUser  } from '../../redux/user/user.actions';
+
 // set custom defaults for axios
 
 const axios = Axios.create({
@@ -11,7 +13,6 @@ const axios = Axios.create({
 });
 
 const AuthState = (props) => {
-
 const [state, setAuth] = useState({
   token: '',
   isAuthenticated: false,
@@ -84,6 +85,8 @@ authActions.Login = async (user) => {
             loading: false,
           }
         });
+        setCurrentUser(loggedInUser);
+        
       }
       resolve(true);
     } catch(err) {
