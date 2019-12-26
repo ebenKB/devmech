@@ -53,3 +53,6 @@ body {
   font-weight: 900;
   color: var(--dev-black__light);
 }
+.small.form-container {
+  width: 400px;
+}

@@ -3,7 +3,7 @@ import { Button  } from 'semantic-ui-react';
 
 const LoginForm =({ handleSubmit, handleChange, user, email, password }) => {
   return (
-    <div className="form-container m-t-80">
+    <div className="small form-container m-t-80">
       <form onSubmit={handleSubmit}>
         <div className="form-group m-t-20">
           <label htmlFor="email">Email</label>
