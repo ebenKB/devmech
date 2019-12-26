@@ -24,7 +24,7 @@ useEffect(() => {
   // check if there is a user in the backend
   const item = JSON.parse(localStorage.getItem('devmech'));
   // console.log('item', item.token);
-  if(item.token) {
+  if(item && item.token) {
     setAuth(state => {
       return {
         ...state, 
