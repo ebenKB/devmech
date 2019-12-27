@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { Link  } from 'react-router-dom';
 
+import './items.css';
+
 const Item = ({item}) => {
   const {id, name, price, imageUrl} = item;
   
