@@ -8,9 +8,6 @@ const header = ({currentUser, isAuthenticated}) => {
     <div>
       <Nav />
       <NavOffset />
-      {
-        isAuthenticated && <span>{currentUser.email}</span>
-      }
     </div>
   )
 }

@@ -3,20 +3,30 @@ import React from 'react'
 const OrderSummary = () => {
   return (
     <div className="cart-order__summary rounded">
-      <h2>Order summary</h2>
-      <div>
-        <h5>Sub total: <span>$92.44</span> </h5>
+      <div className="m-t-1- m-b-10">
+        <h2>Order summary</h2>
       </div>
-      <div>
-        <h5>Shipping: <span>$0.00</span></h5>
-      </div>
-      <div className="m-t-20 m-b-20">
-        <h2>Total : $92.44</h2>
+      <dl className="dev-dl">
+        <dt>Sub Total</dt>
+        <dd>$92.44</dd>
+      </dl>
+      <dl className="dev-dl">
+        <dt>Sub Total</dt>
+        <dd>$92.44</dd>
+      </dl>
+      <div className="dev-divider m-b-10 m-t-10"></div>
+      <div className="dev-bold m-t-20 m-b-20">
+        <dl className="dev-dl">
+          <dt>Total</dt>
+          <dd className="dev-bold__caption">$192.44</dd>
+        </dl>
       </div>
       <div>
         <button 
-          className="ui green button"
-        >Check out</button>
+          className="ui green fluid button m-t-30"
+        >
+        Check out
+        </button>
       </div>
     </div>
   )

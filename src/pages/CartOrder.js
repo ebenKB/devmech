@@ -10,6 +10,9 @@ const CartOrder = () => {
       <div>
         <div className="cart-header">
           <h1>Showing cart ({cart.items.length})</h1>
+          <p>
+            Select all
+          </p>
         </div>
         {
           cart.items.map((item, index)=> {

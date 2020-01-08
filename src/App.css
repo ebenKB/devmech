@@ -6,6 +6,7 @@
 
 body {
   background: var(--main-bg);
+  font-family: 'Open Sans',sans-serif, Arial,Helvetica,sans-serif,Heiti;
 }
 /* style the main app  */
 .App.light {
@@ -53,6 +54,25 @@ body {
   font-weight: 900;
   color: var(--dev-black__light);
 }
+
 .small.form-container {
   width: 400px;
+}
+
+.dev-bold {
+  font-weight: 900;
+}
+
+.dev-bold__caption {
+  font-size: 1.6rem;
+}
+
+.dev-divider {
+  border-top: 1px solid #f2f2f2;
+}
+
+/* override fonts for all headings */
+h1,h2,h3,h4,h5,h6, 
+.dev-bold__caption {
+  font-family: Arial,Helvetica,sans-serif,Heiti;
 }
